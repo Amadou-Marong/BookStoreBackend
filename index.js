@@ -1,5 +1,5 @@
 import express from 'express';
-import { PORT, MONGO_URI } from './config.js';
+import { PORT, DATABASE_URI } from './config.js';
 import mongoose from 'mongoose';
 import BookRoutes from './routes/bookRoutes.js';
 import cors from 'cors';
@@ -58,7 +58,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/v1', BookRoutes);
 
 mongoose
-    .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(DATABASE_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB');
         app.listen(PORT, () => {
@@ -71,7 +71,7 @@ mongoose
     });
 
 
-console.log('MongoDB URI:', MONGO_URI);
+console.log('MongoDB URI:', DATABASE_URI);
 console.log('Server Port:', PORT);
 
 
