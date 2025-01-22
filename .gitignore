@@ -6,6 +6,6 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 package-lock.json
-package.json
+# package.json
 
 
